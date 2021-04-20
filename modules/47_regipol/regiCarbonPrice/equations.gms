@@ -102,11 +102,12 @@ q47_implFETax(t,regi)$(t.val ge max(2010,cm_startyear))..
 
 $endIf.cm_implicitFE
 
-***AM Coal import in India to be max 10% of total PE coal demand starting from 2030
-
-q47_PECoalBound(t,regi,enty)$(t.val gt 2026 AND sameas(regi,"IND") AND sameas(enty,"pecoal"))..
-
-vm_Mport(t,regi,enty) =l=
-vm_prodPe(t,regi,enty) * 0.1
+*** FS: calculate import share of PE demand, necessary for trade-restricting policies 
+q47_PeTradeShare(t,regi,enty)$(tradePe(enty))..
+    v47_PeTradeShare(t,regi,enty)
+  * sum(pe2se(enty,enty2,all_te), vm_demPe(enty,enty2,te))
+  =e=
+  vm_Mport(t,regi,enty)
+;
 
 *** EOF ./modules/47_regiPol/regiCarbonPrice/equations.gms

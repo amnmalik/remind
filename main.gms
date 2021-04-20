@@ -329,6 +329,7 @@ c_H2tdCapCost_stat          "factor to scale H2 transmission and distribution ca
 cm_HeatLim_b                "switch to set maximum share of district heating in FE buildings"
 cm_ElLim_b                  "switch to set maximum share of electricity in FE buildings"
 cm_startIter_EDGET          "starting iteration of EDGE-T"
+cm_IndiaPol                 "switch for India-specific policies"
 ;
 
 *** --------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -598,6 +599,9 @@ $setglobal cm_INNOPATHS_sehe_upper  off !! def = off
 $setglobal cm_fixCO2price  off !! def = off
 
 $setglobal cm_feShareLimits  off  !! def = off
+
+$setglobal cm_IndiaPol  off  !! def = off
+
 
 *** --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 *** --------------------------------------------------------------------------------------------------------------------------------------------------------------------

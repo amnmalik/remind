@@ -107,8 +107,16 @@ $ENDIF.exoTax
 
 equations
 	q47_implFETax(ttot,all_regi)      "implicit final energy tax to represent non CO2-price-driven final energy policies"
-	q47_PECoalBound(t,regi,enty)      "bound on share of coal import to PE coal demand"
 ;
 $endIf.cm_implicitFE
 
+
+*** region-specific policies
+equations
+	q47_PeTradeShare(ttot,all_regi,all_enty) "calculate share of imported PE from total PE demand"
+;
+
+variables
+    v47_PeTradeShare(ttot,all_regi,all_enty) "share of imported PE from total PE demand"
+;
 *** EOF ./modules/47_regipol/regiCarbonPrice/declarations.gms

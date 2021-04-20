@@ -48,6 +48,11 @@ $IFTHEN.CoalRegiPol not "%cm_CoalRegiPol%" == "off"
 
 $ENDIF.CoalRegiPol  
 
+*** India-specific policies
+$ifthen.IndiaPol "%cm_IndiaPol%" == "brown_way"
+  v47_PeTradeShare.up(t,regi,enty)$(t.val gt 2025 AND sameAs(regi, "IND") AND sameAs(enty, "pegas")) = 0.1;
+  v47_PeTradeShare.up(t,regi,enty)$(t.val gt 2025 AND sameAs(regi, "IND") AND sameAs(enty, "pecoal")) = 0.1;
+$endif.IndiaPol
 
 
 *** EOF ./modules/47_regipol/regiCarbonPrice/bounds.gms
