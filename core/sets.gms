@@ -489,6 +489,9 @@ all_in   "all inputs and outputs of the CES function"
   feh2b                   "buildings use of hydrogen"
   feheb                   "buildings use of district heat"
   feelb                   "buildings use of electricity"
+  feelcb                  "buildings use of conventional electricity (all but space heating)"
+  feelhpb                 "buildings use of electricity for space heating with heat pumps"
+  feelrhb                 "buildings use of electricity for space heating with resistive heating"
 
   eni                     "industry energy use"
   enhi                    "industry heat energy use"
@@ -1833,8 +1836,9 @@ entyFe2Sector(all_enty,emi_sectors) "final energy (stationary and transportation
 		feh2t.trans
 		feelt.trans
 		feels.cdr
-		fegas.cdr
-		feh2s.cdr
+		fehes.cdr
+                fegas.cdr
+                feh2s.cdr
 /
 
 ppfEn2Sector(all_in,emi_sectors) "primary energy production factors mapping to sectors"
@@ -1854,6 +1858,10 @@ ppfEn2Sector(all_in,emi_sectors) "primary energy production factors mapping to s
 		ueHDVt.trans
 		ueLDVt.trans
 		ueelTt.trans
+                feeli.cdr
+                fehei.cdr
+                feh2i.cdr
+                fegai.cdr
 /
 
 all_emiMkt         "emission markets"
@@ -2119,7 +2127,7 @@ alias(entyFe,entyFe2);
 alias(teEs,teEs2);
 alias(esty,esty2);
 alias(rlf,rlf2);
-alias(regi,regi2);
+alias(regi,regi2,regi3);
 alias(steps,steps2);
 alias(all_emiMkt,emiMkt);
 alias(emi_sectors,sector);

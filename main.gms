@@ -80,11 +80,11 @@
 
 *##################### R SECTION START (VERSION INFO) ##########################
 * 
-* Regionscode: 690d3718e151be1b450b394c1064b1c5
+* Regionscode: 62eff8f7
 * 
-* Input data revision: 5.979
+* Input data revision: 5.98312
 * 
-* Last modification (input data): Wed Mar 17 11:28:47 2021
+* Last modification (input data): Wed Apr 14 15:08:12 2021
 * 
 *###################### R SECTION END (VERSION INFO) ###########################
 
@@ -190,7 +190,7 @@ $setglobal industry  fixed_shares     !! def = simple
 ***---------------------    38_stationary    --------------------------------------
 $setglobal stationary  off            !! def = simple
 ***---------------------    39_CCU    --------------------------------------
-$setglobal CCU  on !! def = off
+$setglobal CCU  on !! def = on
 ***---------------------    40_techpol  -----------------------------------------
 $setglobal techpol  none              !! def = none
 ***---------------------    41_emicapregi  --------------------------------------
@@ -449,6 +449,7 @@ $setGlobal cm_CCSRegiPol	 off   !! def = off
 $setGlobal cm_implicitFE  off !! def = off
 $setGlobal cm_implFETarget  2030.EUR_regi 1.26921 !! def = 2030.EUR_regi 1.26921
 $setGlobal cm_implFEExoTax  off   !! def = off
+$setGlobal cm_vehiclesSubsidies  off !! def = off
 
 cm_trdadj            = 2;    !! def = 2.0
 cm_trdcst            = 1.5;  !! def = 1.5
@@ -552,7 +553,7 @@ $setGlobal cm_magicc_temperatureImpulseResponse  off           !! def = off
 
 $setGlobal cm_damage_DiceLike_specification  HowardNonCatastrophic   !! def = HowardNonCatastrophic
 
-$setglobal cm_CES_configuration  stat_off-indu_fixed_shares-buil_simple-tran_complex-POP_pop_SSP2-GDP_gdp_SSP2-Kap_debt_limit-Reg_690d3718e1   !! this will be changed by start_run()
+$setglobal cm_CES_configuration  stat_off-indu_fixed_shares-buil_simple-tran_complex-POP_pop_SSP2-GDP_gdp_SSP2-Kap_debt_limit-Reg_62eff8f7   !! this will be changed by start_run()
 
 $setglobal c_CES_calibration_new_structure  0    !! def =  0
 $setglobal c_CES_calibration_iterations  10    !! def = 10
@@ -602,6 +603,10 @@ $setglobal cm_feShareLimits  off  !! def = off
 
 $setglobal cm_IndiaPol  off  !! def = off
 
+$setglobal c_fuelprice_init  off !! def = off
+$setglobal cm_seTradeScenario  off  !! def = off
+
+$setglobal cm_altTransBunkersShare  off      !! def = off
 
 *** --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 *** --------------------------------------------------------------------------------------------------------------------------------------------------------------------
