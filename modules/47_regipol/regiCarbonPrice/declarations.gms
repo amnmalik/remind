@@ -112,6 +112,7 @@ $endIf.cm_implicitFE
 
 
 *** region-specific policies
+$ifthen.IndiaPol "%cm_IndiaPol%" == "brown_way"
 equations
 	q47_PeTradeShare(ttot,all_regi,all_enty) "calculate share of imported PE from total PE demand"
 ;
@@ -119,4 +120,6 @@ equations
 variables
     v47_PeTradeShare(ttot,all_regi,all_enty) "share of imported PE from total PE demand"
 ;
+$endif.IndiaPol
+
 *** EOF ./modules/47_regipol/regiCarbonPrice/declarations.gms

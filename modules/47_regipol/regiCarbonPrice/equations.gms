@@ -21,7 +21,8 @@ q47_emiTarget_netCO2_noBunkers(t, regi)..
 	vm_emiAll(t,regi,"co2")
 	- sum(se2fe(enty,enty2,te),
 		pm_emifac(t,regi,enty,enty2,te,"co2")
-		* vm_demFeSector(t,regi,enty,enty2,"trans","other"))
+		* vm_demFeSector(t,regi,enty,enty2,"trans","other")
+	)
 ;
 
 *** gross Fossil Fuel and Industry co2 emissions: net energy co2 + cement co2 + BECCS
@@ -44,10 +45,8 @@ q47_emiTarget_netGHG_noBunkers(t, regi)..
 	v47_emiTarget(t,regi,"netGHG_noBunkers")
 	=e=
 	vm_co2eq(t,regi)
-	-
-	sum(se2fe(enty,enty2,te),
-		(
-		pm_emifac(t,regi,enty,enty2,te,"co2")
+	-sum(se2fe(enty,enty2,te),
+		(pm_emifac(t,regi,enty,enty2,te,"co2")
 		+ pm_emifac(t,regi,enty,enty2,te,"n2o")*sm_tgn_2_pgc
 		+ pm_emifac(t,regi,enty,enty2,te,"ch4")*sm_tgch4_2_pgc
 		) * vm_demFeSector(t,regi,enty,enty2,"trans","other")
@@ -101,11 +100,16 @@ q47_implFETax(t,regi)$(t.val ge max(2010,cm_startyear))..
 $endIf.cm_implicitFE
 
 *** FS: calculate import share of PE demand, necessary for trade-restricting policies 
+$ifthen.IndiaPol "%cm_IndiaPol%" == "brown_way"
+
 q47_PeTradeShare(t,regi,enty)$(tradePe(enty))..
     v47_PeTradeShare(t,regi,enty)
-  * sum(pe2se(enty,enty2,all_te), vm_demPe(enty,enty2,te))
+  * sum(pe2se(enty,enty2,te), vm_demPe(t,regi,enty,enty2,te))
   =e=
   vm_Mport(t,regi,enty)
 ;
+
+$endif.IndiaPol
+
 
 *** EOF ./modules/47_regiPol/regiCarbonPrice/equations.gms
