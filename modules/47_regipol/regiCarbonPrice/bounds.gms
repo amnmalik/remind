@@ -72,4 +72,13 @@ $ifthen.IndiaPol "%cm_IndiaPol%" == "brown_way"
   v47_PeTradeShare.up(t,regi,enty)$(t.val gt 2025 AND sameAs(regi, "IND") AND sameAs(enty, "pecoal")) = 0.1;
 $endif.IndiaPol
 
+
+$ifthen.IndiaPol "%cm_IndiaPol%" == "green_way"
+*** Coal power phase-out from 2025 onwards
+  vm_deltaCap.up(t,regi,"pc","1")$(t.val ge 2025 AND sameAs(regi, "IND")) = 1e-5;
+*** no conventional car sales from 2035 onwards (hybrid cars still allowed)
+  vm_deltaCap.up(t,regi,"apCarPeT","1")$(t.val ge 2035 AND sameAs(regi, "IND")) = 1e-5;
+  vm_deltaCap.up(t,regi,"apCarDiT","1")$(t.val ge 2035 AND sameAs(regi, "IND")) = 1e-5;
+$endif.IndiaPol
+
 *** EOF ./modules/47_regipol/regiCarbonPrice/bounds.gms

@@ -1057,6 +1057,15 @@ $if %cm_techcosts% == "REG"   );
 pm_inco0_t(ttot,regi,"tdh2s") = c_H2tdCapCost_stat * pm_inco0_t(ttot,regi,"tdh2s");
 
 
+*** FS: rescale spv costs for India-specific policies 
+$ifthen.IndiaPol "%cm_IndiaPol%" == "green_way"
+*** for green way India current policies scenario spv markup because domestic manufacturing 
+*** do via adjustment cost because spv is endogenously learning technology (def is seed 2.00, coeff 0.08)
+  p_adj_seed_te(ttot,regi,"spv")$sameAs(regi, "IND")             = 1.00;
+  p_adj_coeff(ttot,regi,"spv")$sameAs(regi, "IND")               = 0.1;
+$endif.IndiaPol
+
+
 
 
 
