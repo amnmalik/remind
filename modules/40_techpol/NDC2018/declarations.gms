@@ -25,6 +25,13 @@ Equation q40_El_RenShare                               "Lower bound on low carbo
 Equation q40_CoalBound                                 "Restricting new coal power plants in regions with regulation";
 Equation q40_ElCap_RenShare                            "Lower bound on low carbon share in total installed capacity";
 
+Equation q40_RenCapNonBio(ttot,all_regi)                       "calculate capacity of spv, wind and hydro together"
+;
+
+positive variable
+        v40_RenCapNonBio(ttot,all_regi)                        "capacity of spv, wind and hydro together"
+;
+
 *** EOF ./modules/40_techpol/NDC2018/declarations.gms
 
 

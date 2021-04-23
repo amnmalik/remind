@@ -330,6 +330,7 @@ cm_HeatLim_b                "switch to set maximum share of district heating in 
 cm_ElLim_b                  "switch to set maximum share of electricity in FE buildings"
 cm_startIter_EDGET          "starting iteration of EDGE-T"
 cm_IndiaPol                 "switch for India-specific policies"
+cm_India_techpol_up         "switch for inserting renewable power technology upper bounds for India in 2025 and 2030"
 ;
 
 *** --------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -527,6 +528,8 @@ cm_TaxConvCheck = 0; !! def 1, which means tax convergence check is on
 cm_flex_tax = 0; !! def 0
 cm_PriceDurSlope_elh2 = 20; !! def 10
 cm_FlexTaxFeedback = 0; !! def 0, off
+
+cm_India_techpol_up = 1; !! def 0
 
 $setGlobal cm_altFeEmiFac  off        !! def = off	
 

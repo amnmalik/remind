@@ -76,4 +76,20 @@ q40_CoalBound(t,regi)$(t.val gt 2016 AND sameas(regi,"USA"))..
  + (sum(te$(sameas(te,"pc")), sum(te2rlf(te,rlf), vm_deltaCap(t,regi,te,rlf)))*1000)
  + (sum(te$(sameas(te,"coalchp")), sum(te2rlf(te,rlf), vm_deltaCap(t,regi,te,rlf)))*1000)
     =l= (1000-sum(iso_regi$map_iso_regi(iso_regi,regi),p40_CoalBound(t,iso_regi))) ;
+
+
+*** for India-specific policies, targets for spv, wind and hydro together
+q40_RenCapNonBio(t,regi)..
+  v40_RenCapNonBio(t,regi)
+  =e=
+    vm_cap(t,regi,"spv","1")
+  + vm_cap(t,regi,"wind","1")
+  + vm_cap(t,regi,"hydro","1")
+;
+
+
 *** EOF ./modules/40_techpol/NDC2018/equations.gms
+
+
+
+

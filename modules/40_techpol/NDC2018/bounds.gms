@@ -14,6 +14,20 @@ vm_cap.lo(t,regi,"tnrs","1")$(t.val ge 2025) = p40_TechBound(t,regi,"tnrs")*0.00
 vm_cap.lo(t,regi,"hydro","1")$(t.val ge 2025) = p40_TechBound(t,regi,"hydro")*0.001;
 
 
+*** India-specific policies, switch to enable 2025 target as upper bound for spv, wind and hydro
+if(cm_India_techpol_up eq 1,
+*** set back lower bound for India 
+  vm_cap.lo(t,regi,"spv","1")$(sameAs(regi, "IND")) = 0; 
+  vm_cap.lo(t,regi,"wind","1")$(sameAs(regi, "IND")) = 0; 
+  vm_cap.lo(t,regi,"hydro","1")$(sameAs(regi, "IND")) = 0;
+
+  vm_cap.up("2025",regi,"spv","1")$(sameAs(regi, "IND")) = p40_TechBound("2025",regi,"spv")$(sameAs(regi, "IND"))*0.001; 
+  vm_cap.up("2025",regi,"wind","1")$(sameAs(regi, "IND")) = p40_TechBound("2025",regi,"wind")$(sameAs(regi, "IND"))*0.001; 
+  vm_cap.up("2025",regi,"hydro","1")$(sameAs(regi, "IND")) = 1.2*p40_TechBound("2025",regi,"hydro")$(sameAs(regi, "IND"))*0.001;
+*** upper bound of 450 GW hydro, spv and wind together for 2030
+  v40_RenCapNonBio.up("2030",regi)$(sameAs(regi, "IND")) = 0.45;
+);
+
 * FS: in case of a nuclear phase-out scenario (nucscen 7), nuclear lower bound from p40_techBound only up to 2025
 if(cm_nucscen eq 7,
   vm_cap.lo(t,regi_nucscen,"tnrs","1")$((t.val gt 2025) and (t.val ge cm_startyear)) = 0;

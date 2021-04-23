@@ -13,6 +13,20 @@ vm_cap.lo(t,regi,"tnrs","1") = p40_TechBound(t,regi,"tnrs")*0.001;
 vm_cap.lo(t,regi,"hydro","1") = p40_TechBound(t,regi,"hydro")*0.001;
 vm_cap.lo(t,regi,"apCarElT","1") = p40_TechBound(t,regi,"apCarElT");
 
+*** India-specific policies, switch to enable 2025 target as upper bound for spv, wind and hydro
+if(cm_India_techpol_up eq 1,
+*** set back lower bound for India 
+  vm_cap.lo(t,regi,"spv","1")$(sameAs(regi, "IND")) = 0; 
+  vm_cap.lo(t,regi,"wind","1")$(sameAs(regi, "IND")) = 0; 
+  vm_cap.lo(t,regi,"hydro","1")$(sameAs(regi, "IND")) = 0;
+
+  vm_cap.up("2025",regi,"spv","1")$(sameAs(regi, "IND")) = p40_TechBound("2025",regi,"spv")$(sameAs(regi, "IND"))*0.001; 
+  vm_cap.up("2025",regi,"wind","1")$(sameAs(regi, "IND")) = p40_TechBound("2025",regi,"wind")$(sameAs(regi, "IND"))*0.001; 
+  vm_cap.up("2025",regi,"hydro","1")$(sameAs(regi, "IND")) = 1.2*p40_TechBound("2025",regi,"hydro")$(sameAs(regi, "IND"))*0.001;
+*** upper bound of 450 GW hydro, spv and wind together for 2030
+  v40_RenCapNonBio.up("2030",regi)$(sameAs(regi, "IND")) = 0.45;
+);
+
 display vm_cap.lo;
 
 $ifthen.complex_transport "%transport%" == "complex"
@@ -47,5 +61,9 @@ $ifthen.complex_transport "%transport%" == "complex"
    );
  );
 $endif.complex_transport
+
+
+
+
 
 *** EOF ./modules/40_techpol/NPi2018/bounds.gms

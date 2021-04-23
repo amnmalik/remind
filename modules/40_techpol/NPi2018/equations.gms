@@ -47,6 +47,15 @@ q40_PElowcarbonBound(t,regi)$(t.val ge 2020 AND (sameas(regi,"CHN") OR sameas(re
      max(0, pm_prodCouple(regi,enty,enty2,te,enty3)) * vm_prodSe(t,regi,enty,enty2,te))
   );
  
+*** for India-specific policies, targets for spv, wind and hydro together
+q40_RenCapNonBio(t,regi)..
+  v40_RenCapNonBio(t,regi)
+  =e=
+    vm_cap(t,regi,"spv","1")
+  + vm_cap(t,regi,"wind","1")
+  + vm_cap(t,regi,"hydro","1")
+;
+
 
 	
 *** EOF ./modules/40_techpol/NPi2018/equations.gms

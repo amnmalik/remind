@@ -22,6 +22,13 @@ Equation q40_PEgasBound                                "Mandating minimum PE gas
 Equation q40_PElowcarbonBound                          "Lower bound on low carbon share";
 Equation q40_FE_RenShare                               "Lower bound on renewable share";
 
+Equation q40_RenCapNonBio(ttot,all_regi)                       "calculate capacity of spv, wind and hydro together"
+;
+
+positive variable
+        v40_RenCapNonBio(ttot,all_regi)                        "capacity of spv, wind and hydro together"
+;
+
 *** EOF ./modules/40_techpol/NPi2018/declarations.gms
 
 
