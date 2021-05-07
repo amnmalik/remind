@@ -372,6 +372,11 @@ q_limitProd(t,regi,teRe2rlfDetail(teReNoBio(te),rlf))..
 ***-----------------------------------------------------------------------------
 *' Definition of competition for geographical potential for renewable energy types:
 ***-----------------------------------------------------------------------------
+
+*am* testing sensitivity of maxprod and luse to overall spv installation
+pm_dataren(regi,"maxprod",rlf,te) = pm_dataren(regi,"maxprod",rlf,te)*2
+p_datapot(regi,"limitGeopot",rlf,enty) = p_datapot(regi,"limitGeopot",rlf,enty) * 2
+
 *RP* assuming q_limitGeopot to be geographical potential, whith luse equivalent to the land use parameter
 q_limitGeopot(t,regi,peReComp(enty),rlf)..
   p_datapot(regi,"limitGeopot",rlf,enty)
